@@ -79,6 +79,7 @@ bool Triangle::triangles_equivalent(Triangle* other)
     vector<double>* these_vectors[3] = { &this->vec1, &this->vec2, &this->vec3 };
     vector<double>* those_vectors[3] = { &other->vec1, &other->vec2, &other->vec3 };
     size_t vertex1_match_idx = 0;
+
     for (size_t i = 0; i < 3; i++) {
         if(vectors_equivalent(*these_vectors[0], *those_vectors[i])) vertex1_match_idx = i;
     }
@@ -91,8 +92,8 @@ bool Triangle::triangles_equivalent(Triangle* other)
                         vectors_equivalent(*these_vectors[2], *those_vectors[other_vertex_2]);
     bool possibility2 = vectors_equivalent(*these_vectors[2], *those_vectors[other_vertex_1]) &&
                         vectors_equivalent(*these_vectors[1], *those_vectors[other_vertex_2]);
-    if (possibility1 || possibility2) return true;
-    return false;
+
+    return possibility1 || possibility2;
 }
 
 // Miscellaneous vector operations.
